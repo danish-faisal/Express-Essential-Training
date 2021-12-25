@@ -4,6 +4,11 @@ import data from "./data/data.json";
 const app = express();
 const PORT = 3000;
 
+// method to use JSON
+// app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
+
 // for public folder - to serve static files in it on path /
 app.use(express.static("public"));
 
@@ -37,7 +42,9 @@ app.get("/item/:id", (req, res, next) => {
 }, (req, res) => console.log("did you get the right data?"));
 
 app.post("/newItem", (req, res) => {
-    res.send(`a post request with route /newItem on port ${PORT}`);
+    console.log(req.body);
+    res.send(req.body);
+    // res.send(`a post request with route /newItem on port ${PORT}`);
 });
 
 // Routing Chaining
