@@ -49,11 +49,20 @@ app.post("/newItem", (req, res) => {
 
 // Routing Chaining
 app.route("/item")
+    .get((req, res) => {
+        throw new Error();
+        res.send(`a get request with route /item on port ${PORT}`);
+    })
     .put((req, res) => {
         res.send(`a put request with route /item on port ${PORT}`);
     }).delete((req, res) => {
         res.send(`a delete request with route /item on port ${PORT}`);
     });
+
+app.use((err, req, res, next) => {
+    console.log(err.stack);
+    res.status(500).send(`Red Alert! Red Alert!: ${err.stack}`);
+});
 
 app.listen(PORT, () => {
     console.log(`Your server is running on port ${PORT}`);
