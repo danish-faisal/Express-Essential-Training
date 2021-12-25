@@ -16,6 +16,13 @@ app.get("/", (req, res) => {
     res.json(data);
 });
 
+app.get("/images", (req, res) => {
+    res.download("./images/rocket.jpg");
+    // res.redirect("https://www.linkedin.com")
+    // res.end();
+    // res.send(`a get request with route /images on port ${PORT}`);
+});
+
 app.get("/item/:id", (req, res, next) => {
     const user = Number(req.params.id) - 1;
     res.send(data[user]);
