@@ -6,6 +6,9 @@ import data from "./data/data.json";
 const app = express();
 const PORT = 3000;
 
+// This is for proxies
+app.set("trust proxy", "loopback");
+
 // method to use JSON
 // app.use(express.json());
 
