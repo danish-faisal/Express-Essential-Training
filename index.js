@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/newItem", (req, res) => {
-    res.send(`a get request with route /newItem on port ${PORT}`);
+    res.send(`a post request with route /newItem on port ${PORT}`);
 });
 
 app.put("/item", (req, res) => {
