@@ -4,6 +4,12 @@ import data from "./data/data.json";
 const app = express();
 const PORT = 3000;
 
+// for public folder - to serve static files in it on path /
+app.use(express.static("public"));
+
+// for images folder - to serve static files in it on path /images
+app.use("/images", express.static("images"));
+
 app.get("/", (req, res) => {
     // res.send(`a get request with route / on port ${PORT}`);
     // get data from the db first
