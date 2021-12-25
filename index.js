@@ -33,13 +33,13 @@ app.post("/newItem", (req, res) => {
     res.send(`a post request with route /newItem on port ${PORT}`);
 });
 
-app.put("/item", (req, res) => {
-    res.send(`a put request with route /item on port ${PORT}`);
-});
-
-app.delete("/item", (req, res) => {
-    res.send(`a delete request with route /item on port ${PORT}`);
-});
+// Routing Chaining
+app.route("/item")
+    .put((req, res) => {
+        res.send(`a put request with route /item on port ${PORT}`);
+    }).delete((req, res) => {
+        res.send(`a delete request with route /item on port ${PORT}`);
+    });
 
 app.listen(PORT, () => {
     console.log(`Your server is running on port ${PORT}`);
