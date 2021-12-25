@@ -1,4 +1,6 @@
 import express from "express";
+import favicon from "serve-favicon";
+import path from "path";
 import data from "./data/data.json";
 
 const app = express();
@@ -14,6 +16,8 @@ app.use(express.static("public"));
 
 // for images folder - to serve static files in it on path /images
 app.use("/images", express.static("images"));
+
+app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
 app.get("/", (req, res) => {
     // res.send(`a get request with route / on port ${PORT}`);
