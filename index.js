@@ -24,7 +24,14 @@ app.get("/images", (req, res) => {
 });
 
 app.get("/item/:id", (req, res, next) => {
+    // this is middleware that pulls the data
+    console.group(req.params.id);
     const user = Number(req.params.id) - 1;
+    console.log(data[user]);
+    // middleware that uses req object
+    console.log(`Request from: ${req.originalUrl}`);
+    console.log(`Request type: ${req.method}`);
+    // everything above this is middleware
     res.send(data[user]);
     next();
 }, (req, res) => console.log("did you get the right data?"));
