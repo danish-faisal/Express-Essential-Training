@@ -5,7 +5,9 @@ const app = express();
 const PORT = 3000;
 
 app.get("/", (req, res) => {
-    res.send(`a get request with route / on port ${PORT}`);
+    // res.send(`a get request with route / on port ${PORT}`);
+    // get data from the db first
+    res.json(data);
 });
 
 app.post("/newItem", (req, res) => {
